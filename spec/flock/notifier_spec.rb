@@ -10,15 +10,20 @@ RSpec.describe Flock::Notifier do
   {
     { text: "hello" } => { text: "hello" },
   }.each do |args, payload|
-    it "sends correct payload for #post(#{args})" do
+    it "sends correct payload for #ping(#{args})" do
+      # Specify assertions
       stub =
         stub_request(:post, Flock::Notifier::SEND_MESSAGE_HOOK_BASE_URL + webhook_uid)
-        .with(body: { text: args[:text] }.to_json)
-        .to_return(status: 200, body: { "uid": 'random-string-uid' }.to_json)
+        .with(
+          body: { text: payload[:text] }.to_json,
+          headers: { 'Content-Type': 'application/json' }
+        ).to_return(status: 200, body: { "uid": 'random-string-uid' }.to_json)
 
+      # Execution
       notifier = Flock::Notifier.new(webhook_uid)
-      notifier.post(args[:text])
+      notifier.ping(args[:text])
 
+      # Assertion
       expect(stub).to have_been_requested
     end
   end

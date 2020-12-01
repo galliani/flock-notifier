@@ -8,7 +8,7 @@ A simple wrapper to send notifications to [Flock](https://flock.com/) channel us
 require 'flock-notifier'
 
 notifier = Flock::Notifier.new "CHANNEL_WEBHOOK_UID"
-notifier.post 'Hello World'
+notifier.ping 'Hello World'
 # => if your webhook is setup, will message "Hello World"
 # => to the selected channel you set in Flock when generating the incoming webhook
 ```
