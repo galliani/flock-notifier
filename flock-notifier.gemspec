@@ -13,8 +13,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'http://github.com/galliani/flock-notifier'
   spec.license       = 'MIT'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-
   spec.metadata['homepage_uri']     = spec.homepage
   spec.metadata['source_code_uri']  = 'http://github.com/galliani/flock-notifier'
   spec.metadata['changelog_uri']    = 'http://github.com/galliani/flock-notifier'
